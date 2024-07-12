@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { Movie } from "../movie";
-import { Movies } from "../movie.datasource";
+import { MovieService } from "../movie.service";
 
 
 @Component({
@@ -14,10 +14,18 @@ export class MoviesComponent{
     selectedMovie = new Movie;
     showMovies : Boolean = false;
 
-    moviess = Movies;
+    movies: Movie[] = [];
 
+    constructor(private moviesService:MovieService){}
+
+    ngOnInit(): void{
+        this.getMovies();
+    }
     onSelect(movie:Movie): void{
         this.selectedMovie= movie;
         this.showMovies=true;
+    }
+    getMovies(): void{
+        this.movies = this.moviesService.getMovies();
     }
 }
