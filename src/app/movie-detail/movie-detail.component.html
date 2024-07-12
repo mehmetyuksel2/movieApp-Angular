@@ -1,0 +1,17 @@
+<div class="card" >
+    <div class="card-body">
+        <span style="background-color: rgb(212, 200, 21); color: white;">
+            id: {{movie.id}} name: {{movie.name}}
+        </span>
+        <div class="input-group">
+            <input type="text" [(ngModel)] = "movie.name" class="form-control"/>
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!movie">
+  Film bulunamadı.
+</div>

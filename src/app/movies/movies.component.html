@@ -1,24 +1,10 @@
-<div class="card" *ngIf="showMovies">
-    <div class="card-body">
-        <span style="background-color: rgb(212, 200, 21); color: white;">
-            id: {{selectedMovie.id}} name: {{selectedMovie.name}}
-        </span>
-        <div class="input-group">
-            <input type="text" [(ngModel)] = "selectedMovie.name" class="form-control"/>
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button">Update</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
+<movie-detail [movie]="selectedMovie" *ngIf = "showMovies"></movie-detail>
 <div class="card">
     <div class="card-header">
         {{title}}
     </div>
     <ul class="list-group list-group-flush">
-        <li *ngFor="let movie of moviess" (click)="onSelect(movie)" class="list-group-item"
+        <li *ngFor="let movie of movies" (click)="onSelect(movie)" class="list-group-item"
         [class.active]="movie===selectedMovie"
         
         >
