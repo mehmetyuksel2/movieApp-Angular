@@ -28,4 +28,18 @@ export class MoviesComponent {
         this.moviesService.getMovies()
             .subscribe(movies => { this.movies = movies });
     }
+
+    add(name:string, imageUrl:string, description:string): void{
+        this.moviesService.add({
+            name,
+            imageUrl,
+            description
+        } as Movie).subscribe(movie=> this.movies.push(movie)); //as ile obje cinsindeki veriyi Movie tipine convert ediyoruz
+
+    }
+
+    delete(movie: Movie): void{
+        this.movies = this.movies.filter(m=> m!==movie);
+        this.moviesService.delete(movie).subscribe();
+    }
 }
