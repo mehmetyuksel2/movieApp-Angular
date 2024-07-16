@@ -8,19 +8,32 @@ import { MovieComponent } from './movie/movie.component';
 import { FormsModule } from '@angular/forms';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { CommonModule } from '@angular/common';
+import { LoggingComponent } from './logging/logging.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     MovieComponent,
     MoviesComponent,
-    MovieDetailComponent
+    MovieDetailComponent,
+    LoggingComponent,
+    NavbarComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService,{dataEncapsulation: false}
+    ) //gerçek api ile çalışılması durumunda bunun silinmesi gerekir
   ],
   providers: [
     provideClientHydration()
