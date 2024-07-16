@@ -1,13 +1,12 @@
-<movie-detail [movie]="selectedMovie" *ngIf = "showMovies"></movie-detail>
+
+<!--movies.ts ten gelen movie değişkeni movie detaile gönderiliyor-->
 <div class="card">
     <div class="card-header">
         {{title}}
     </div>
     <ul class="list-group list-group-flush">
-        <li *ngFor="let movie of movies" (click)="onSelect(movie)" class="list-group-item"
-        [class.active]="movie===selectedMovie"
-        
-        >
+        <li *ngFor="let movie of movies"  routerLink="/detail/{{ movie.id }}" class="list-group-item">
+        <!--tıklanması durumunda on select metodu çalışır-->
             <span class="badge badge-primary" style="background-color: rgb(18, 84, 239); color: white;">
                 {{movie.id}}
             </span>

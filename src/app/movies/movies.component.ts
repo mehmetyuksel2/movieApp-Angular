@@ -6,26 +6,26 @@ import { MovieService } from "../movie.service";
 @Component({
     selector: 'movies', // .movies ---> <div class="movies"></div> ---- movies <movies></movies>
     templateUrl: 'movies.component.html'
-    
+
 })
-export class MoviesComponent{
+export class MoviesComponent {
     title = "Movies App(title)";
 
     selectedMovie = new Movie;
-    showMovies : Boolean = false;
+    showMovies: Boolean = false;
 
     movies: Movie[] = [];
 
-    constructor(private moviesService:MovieService){}
+    constructor(private moviesService: MovieService) { }
 
-    ngOnInit(): void{
+    ngOnInit(): void {
         this.getMovies();
     }
-    onSelect(movie:Movie): void{
-        this.selectedMovie= movie;
-        this.showMovies=true;
+    onSelect(movie: Movie): void {
+        this.selectedMovie = movie;
     }
-    getMovies(): void{
-        this.movies = this.moviesService.getMovies();
+    getMovies(): void {
+        this.moviesService.getMovies()
+            .subscribe(movies => { this.movies = movies });
     }
 }
